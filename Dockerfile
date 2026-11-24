@@ -16,11 +16,11 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NEXT_SHARP_PATH=/app/node_modules/sharp
 
+# Commit shown in the footer: COMMIT_HASH from the GitHub workflow, or Coolify's
+# SOURCE_COMMIT (enable "Include Source Commit in Build" in Coolify).
 ARG COMMIT_HASH
-ENV NEXT_PUBLIC_COMMIT_HASH=${COMMIT_HASH}
-
-# The legal pages are fetched from the HAWConnect backend while building, so
-# this URL must be reachable from the build environment or the build fails.
+ARG SOURCE_COMMIT
+ENV NEXT_PUBLIC_COMMIT_HASH=${COMMIT_HASH:-$SOURCE_COMMIT}
 
 # Optional store links, inlined into the client bundle at build time.
 ARG NEXT_PUBLIC_APP_STORE_URL
@@ -35,11 +35,10 @@ FROM node:26.13.1-alpine@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43dd
 WORKDIR /app
 
 ARG COMMIT_HASH
+ARG SOURCE_COMMIT
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NEXT_PUBLIC_COMMIT_HASH=${COMMIT_HASH}
-
-# Needed at runtime too: the legal pages revalidate hourly against the backend.
+ENV NEXT_PUBLIC_COMMIT_HASH=${COMMIT_HASH:-$SOURCE_COMMIT}
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
