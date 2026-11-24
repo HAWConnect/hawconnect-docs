@@ -1,0 +1,66 @@
+# App einrichten
+
+Repository: [hawconnect/hawconnect-app](https://github.com/hawconnect/hawconnect-app). Die App und das Backend liegen als Geschwister-Repositories nebeneinander.
+
+## Voraussetzungen
+
+Bun in der Version aus der Datei `.bun-version` des Repositories.
+
+## Installieren
+
+```bash
+bun install --frozen-lockfile
+cp .env.local.example .env.local
+```
+
+Trage in `.env.local` die öffentlichen Entwicklungsadressen ein:
+
+```dotenv
+EXPO_PUBLIC_HAWCONNECT_GRAPHQL_ENDPOINT=http://localhost:4000/graphql
+EXPO_PUBLIC_HAWCONNECT_AUTH_URL=http://localhost:4000/api/accounts
+EXPO_PUBLIC_WEBSITE_URL=http://localhost:3000
+EXPO_PUBLIC_SOURCE_REPOSITORY_URL=https://github.com/hawconnect/hawconnect-app
+```
+
+In der App setzt du außerdem die Adresse der Anmeldeseite:
+
+```dotenv
+EXPO_PUBLIC_HAWCONNECT_LOGIN_URL=http://account.localhost:4000
+```
+
+Wie die Anmeldung lokal funktioniert, steht unter [Backend einrichten](/de/docs/contribute/setup-backend).
+
+Alle `EXPO_PUBLIC_*`-Werte sind in der App eingebettet. Lege dort nie Datenbankpasswörter, SMTP-Zugangsdaten, Sitzungsgeheimnisse oder private Kalenderlinks ab.
+
+## Starten
+
+Starte zuerst das Backend, siehe [Backend einrichten](/de/docs/contribute/setup-backend). Dann:
+
+```bash
+bun start
+```
+
+Öffne `http://localhost:3000`. Auf einem echten Gerät bezieht sich `localhost` auf das Gerät selbst; dort brauchst du ein erreichbares Backend im LAN oder per HTTPS.
+
+Ein Stundenplan-Import aus einer lokalen ICS-Datei funktioniert ohne Hochschul-Zugangsdaten.
+
+## Android und iOS
+
+Die App braucht einen eigenen nativen Build und läuft nicht in Expo Go. Dafür brauchst du die Android-Werkzeuge oder Xcode:
+
+```bash
+bun android
+bun ios
+```
+
+## Prüfen
+
+```bash
+bun run codegen
+bunx tsc --noEmit
+bun run lint
+bun test
+bun run i18n:check
+```
+
+`bun run codegen` liest das Schema aus dem Geschwister-Repository `../hawconnect-backend`. Generierte GraphQL-Dateien werden neu erzeugt, nicht von Hand geändert.

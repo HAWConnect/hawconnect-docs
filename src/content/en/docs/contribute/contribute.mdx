@@ -1,0 +1,29 @@
+# Contribute
+
+Students and other contributors are welcome. You do not need to be an expert.
+
+## Where to start
+
+- **Report bugs or suggest ideas:** as an issue in the matching repository, see [Feedback](/en/docs/app/feedback).
+- **Translate:** the app text lives in files in the source code (`src/localization/de` and `en`). Improve it with a pull request and always update both languages.
+- **Contribute code:** set up your environment, see [app](/en/docs/contribute/setup-app), [backend](/en/docs/contribute/setup-backend) and [console](/en/docs/contribute/setup-console).
+
+## Ground rules
+
+- Work on a focused branch and keep pull requests small.
+- In the pull request, describe the user-visible problem, the solution, how you checked it and what remains open.
+- Add meaningful tests for behaviour changes and update both DE and EN.
+- Run type checks, applicable tests, the localisation check and lint before review.
+- Use Bun and each repository's lockfile. Formatting follows each repository's Biome configuration; run `bun run lint` (or `bun run check` in the console).
+- Do not edit generated files (for example GraphQL types) by hand; regenerate them.
+- Do not commit private data, `.env.local`, credentials or build output.
+
+## Content guidelines
+
+- Public data sources must be verifiable; missing data is shown honestly as missing.
+- Do not ask for university credentials and do not claim university endorsement.
+- Never infer allergens or nutrition from a dish name.
+
+## Licence
+
+All repositories are licensed under AGPL-3.0.

@@ -1,0 +1,28 @@
+# Architecture
+
+HAWConnect consists of four separate repositories and one PostgreSQL database managed by the backend.
+
+| Part | Repository | Role |
+| --- | --- | --- |
+| App | [hawconnect-app](https://github.com/hawconnect/hawconnect-app) | Android, iOS and web app (Expo, React Native) |
+| Backend | [hawconnect-backend](https://github.com/hawconnect/hawconnect-backend) | API, accounts, sync, sign-in site and ingestion of public sources (Bun, Express, Apollo) |
+| Console | [hawconnect-console](https://github.com/hawconnect/hawconnect-console) | Administration interface (TanStack Start, React) |
+| Website | [hawconnect-docs](https://github.com/hawconnect/hawconnect-docs) | this site (Next.js, Nextra) |
+
+The backend owns database access. Neither the app nor the console receives database credentials. The console calls the backend's admin API, where every privileged request is checked.
+
+## Addresses
+
+| Address | Purpose |
+| --- | --- |
+| `hawconnect.de` | this website |
+| `app.hawconnect.de` | web app |
+| `api.hawconnect.de` | backend (GraphQL and REST) |
+| `account.hawconnect.de` | sign-in site, served by the backend |
+| `console.hawconnect.de` | admin console |
+
+These are the intended target addresses of the configuration.
+
+## Data sources
+
+The backend ingests public sources: menus from the Studierendenwerk Hamburg, plus public HAW events, HAW news and semester dates. No university credentials are needed. Direct authenticated university APIs are not used.

@@ -1,0 +1,66 @@
+# Set up the app
+
+Repository: [hawconnect/hawconnect-app](https://github.com/hawconnect/hawconnect-app). The app and the backend live next to each other as sibling repositories.
+
+## Requirements
+
+Bun, in the version given in the repository's `.bun-version` file.
+
+## Install
+
+```bash
+bun install --frozen-lockfile
+cp .env.local.example .env.local
+```
+
+Set the public development endpoints in `.env.local`:
+
+```dotenv
+EXPO_PUBLIC_HAWCONNECT_GRAPHQL_ENDPOINT=http://localhost:4000/graphql
+EXPO_PUBLIC_HAWCONNECT_AUTH_URL=http://localhost:4000/api/accounts
+EXPO_PUBLIC_WEBSITE_URL=http://localhost:3000
+EXPO_PUBLIC_SOURCE_REPOSITORY_URL=https://github.com/hawconnect/hawconnect-app
+```
+
+In the app, also set the address of the sign-in site:
+
+```dotenv
+EXPO_PUBLIC_HAWCONNECT_LOGIN_URL=http://account.localhost:4000
+```
+
+For how sign-in works locally, see [Set up the backend](/en/docs/contribute/setup-backend).
+
+All `EXPO_PUBLIC_*` values are embedded in the app. Never put database passwords, SMTP credentials, session secrets or private calendar URLs there.
+
+## Run
+
+Start the backend first, see [Set up the backend](/en/docs/contribute/setup-backend). Then:
+
+```bash
+bun start
+```
+
+Open `http://localhost:3000`. On a physical device, `localhost` refers to the device itself; you need a backend reachable on your LAN or over HTTPS.
+
+Importing a timetable from a local ICS file works without university credentials.
+
+## Android and iOS
+
+The app needs its own native build and does not run in Expo Go. You need the Android tooling or Xcode:
+
+```bash
+bun android
+bun ios
+```
+
+## Check
+
+```bash
+bun run codegen
+bunx tsc --noEmit
+bun run lint
+bun test
+bun run i18n:check
+```
+
+`bun run codegen` reads the schema from the sibling `../hawconnect-backend` repository. Regenerate generated GraphQL files instead of editing them by hand.

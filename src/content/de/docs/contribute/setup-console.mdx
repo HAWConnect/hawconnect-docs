@@ -1,0 +1,52 @@
+# Console einrichten
+
+Repository: [hawconnect/hawconnect-console](https://github.com/hawconnect/hawconnect-console). Die Console ist die Verwaltungsoberfläche für Ankündigungen, Campus-Life-Veranstaltungen, Clubs, Marktplatz-Moderation, Rechtstexte und Berechtigungen. Sie ist gebaut mit TanStack Start, React, Tailwind und Bun.
+
+Sie nutzt das gemeinsame Backend und hat keine eigene Datenbank. Datenbank-Zugangsdaten gehören nie in dieses Repository.
+
+## Installieren
+
+```bash
+bun install --frozen-lockfile
+cp .env.example .env.local
+```
+
+```dotenv
+APP_URL=http://localhost:43127
+SESSION_SECRET=REPLACE_WITH_A_RANDOM_SECRET_OF_AT_LEAST_32_CHARACTERS
+HAWCONNECT_ADMIN_API_URL=http://localhost:4000/api/admin
+HAWCONNECT_LOGIN_URL=http://account.localhost:4000
+```
+
+Erzeuge das Geheimnis lokal, zum Beispiel mit `openssl rand -base64 32`, und füge es nirgends in Dokumentation oder Commits ein.
+
+Das Backend braucht zusätzlich:
+
+```dotenv
+HAWCONNECT_CONSOLE_ORIGIN=http://localhost:43127
+HAWCONNECT_ADMIN_EMAILS=maintainer@haw-hamburg.de
+```
+
+Ein Konto braucht die Rolle Super admin (aus `HAWCONNECT_ADMIN_EMAILS`) oder eine in der Console vergebene Rolle. Eine E-Mail-Adresse allein gibt keine Rechte.
+
+## Starten
+
+Starte das Backend, siehe [Backend einrichten](/de/docs/contribute/setup-backend), dann:
+
+```bash
+bun run dev
+```
+
+Öffne `http://localhost:43127/login` und wähle **Melde dich an, um fortzufahren**. Du meldest dich auf der Anmeldeseite des Backends (`account.localhost`) mit einem HAWConnect-Konto an, siehe [Backend einrichten](/de/docs/contribute/setup-backend). Für die Bestätigung eines neuen Kontos braucht das Backend eine funktionierende SMTP-Konfiguration.
+
+## Prüfen
+
+```bash
+bun test
+bun run typecheck
+bun run check
+bun run generate-routes
+bun run build
+```
+
+Die Datei `src/routeTree.gen.ts` wird nicht von Hand bearbeitet. Protokolliere keine Anfrage-Inhalte, Tokens oder privaten Daten.

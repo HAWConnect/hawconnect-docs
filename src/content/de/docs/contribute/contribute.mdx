@@ -1,0 +1,29 @@
+# Mitmachen
+
+Studierende und andere Interessierte sind willkommen. Du musst keine Expertin und kein Experte sein.
+
+## Wo anfangen
+
+- **Fehler melden oder Ideen vorschlagen:** als Issue im passenden Repository, siehe [Feedback](/de/docs/app/feedback).
+- **Übersetzen:** Die App-Texte liegen in Dateien im Quellcode (`src/localization/de` und `en`). Verbessere sie per Pull Request und pflege immer beide Sprachen.
+- **Code beitragen:** Richte die Umgebung ein, siehe [App](/de/docs/contribute/setup-app), [Backend](/de/docs/contribute/setup-backend) und [Console](/de/docs/contribute/setup-console).
+
+## Grundregeln
+
+- Arbeite auf einem eigenen Branch und halte Pull Requests klein.
+- Beschreibe im Pull Request das Problem für Nutzende, die Lösung, wie du sie geprüft hast und was offen bleibt.
+- Ergänze sinnvolle Tests für geändertes Verhalten und aktualisiere DE und EN.
+- Führe vor dem Review Typprüfung, passende Tests, Lokalisierungsprüfung und Lint aus.
+- Nutze Bun und die Lockfiles der jeweiligen Repositories. Die Formatierung folgt der Biome-Konfiguration des jeweiligen Repositorys; führe `bun run lint` aus (in der Console `bun run check`).
+- Generierte Dateien (zum Beispiel GraphQL-Typen) nicht von Hand ändern, sondern neu erzeugen.
+- Keine privaten Daten, `.env.local`, Zugangsdaten oder Build-Ausgaben committen.
+
+## Inhaltliche Leitlinien
+
+- Öffentliche Datenquellen müssen überprüfbar sein; fehlende Daten werden ehrlich als fehlend angezeigt.
+- Keine Hochschul-Zugangsdaten abfragen und keine offizielle Unterstützung der Hochschule behaupten.
+- Allergene oder Nährwerte nie aus einem Gerichtsnamen ableiten.
+
+## Lizenz
+
+Alle Repositories stehen unter AGPL-3.0.

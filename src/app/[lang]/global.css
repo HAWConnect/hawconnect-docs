@@ -1,0 +1,562 @@
+@import "tailwindcss";
+@import "nextra-theme-docs/style.css";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Design tokens: see src/styles/tokens.ts (guarded by tokens.test.ts).
+  Nextra/next-themes toggles the `dark` class on <html>.
+*/
+
+@theme inline {
+	--font-sans: var(--font-outfit), system-ui, sans-serif;
+
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+
+	/* hc tokens: bg-hc-page, text-hc-text, border-hc-border, rounded-hc-card ... */
+	--color-hc-primary: var(--hc-primary);
+	--color-hc-primary-hover: var(--hc-primary-hover);
+	--color-hc-secondary: var(--hc-secondary);
+	--color-hc-accent: var(--hc-accent);
+	--color-hc-accent-soft: var(--hc-accent-soft);
+	--color-hc-page: var(--hc-page);
+	--color-hc-surface: var(--hc-surface);
+	--color-hc-border: var(--hc-border);
+	--color-hc-text: var(--hc-text);
+	--color-hc-text-muted: var(--hc-text-muted);
+	--color-hc-text-tertiary: var(--hc-text-tertiary);
+	--color-hc-success: var(--hc-success);
+	--color-hc-warning: var(--hc-warning);
+	--color-hc-danger: var(--hc-danger);
+	--color-hc-primary-0: var(--hc-primary-0);
+	--color-hc-primary-1: var(--hc-primary-1);
+	--color-hc-primary-2: var(--hc-primary-2);
+	--color-hc-primary-3: var(--hc-primary-3);
+	--color-hc-primary-4: var(--hc-primary-4);
+	--color-hc-primary-5: var(--hc-primary-5);
+	--color-hc-primary-6: var(--hc-primary-6);
+	--color-hc-primary-7: var(--hc-primary-7);
+	--color-hc-primary-8: var(--hc-primary-8);
+	--color-hc-primary-9: var(--hc-primary-9);
+	--radius-hc-xs: var(--hc-radius-xs);
+	--radius-hc-sm: var(--hc-radius-sm);
+	--radius-hc-md: var(--hc-radius-md);
+	--radius-hc-lg: var(--hc-radius-lg);
+	--radius-hc-xl: var(--hc-radius-xl);
+	--radius-hc-card: var(--hc-radius-card);
+	--shadow-hc-card: var(--hc-shadow-card);
+
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-accordion-content-height);
+		}
+	}
+	@keyframes accordion-up {
+		from {
+			height: var(--radix-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+}
+
+@utility container {
+	margin-inline: auto;
+	padding-inline: 2rem;
+	@media (width >= --theme(--breakpoint-sm)) {
+		max-width: none;
+	}
+	@media (width >= 1400px) {
+		max-width: 1400px;
+	}
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
+}
+
+:root {
+	--hc-primary: #40296c;
+	--hc-primary-hover: #473173;
+	--hc-secondary: #3d0b44;
+	--hc-accent: #e44689;
+	--hc-accent-soft: rgba(228, 70, 137, 0.12);
+	--hc-page: #f7f6f8;
+	--hc-surface: #ffffff;
+	--hc-border: rgba(0, 0, 0, 0.08);
+	--hc-text: #211438;
+	--hc-text-muted: #646b78;
+	--hc-text-tertiary: #9ca3af;
+	--hc-success: #15803d;
+	--hc-warning: #d97706;
+	--hc-danger: #b91c1c;
+	--hc-primary-0: #f4f1f9;
+	--hc-primary-1: #e5dff1;
+	--hc-primary-2: #cbbfe4;
+	--hc-primary-3: #ac97d3;
+	--hc-primary-4: #8c70c2;
+	--hc-primary-5: #6f4cb3;
+	--hc-primary-6: #593d8f;
+	--hc-primary-7: #473173;
+	--hc-primary-8: #40296c;
+	--hc-primary-9: #211438;
+	--hc-radius-xs: 3px;
+	--hc-radius-sm: 5px;
+	--hc-radius-md: 7px;
+	--hc-radius-lg: 10px;
+	--hc-radius-xl: 15px;
+	--hc-radius-card: 12px;
+	--hc-gradient: linear-gradient(135deg, #40296c, #593d8f);
+	--hc-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04);
+
+	/* shadcn-style names used by ui/* primitives, mapped onto the hc tokens */
+	--radius: var(--hc-radius-lg);
+	--background: var(--hc-page);
+	--foreground: var(--hc-text);
+	--card: var(--hc-surface);
+	--card-foreground: var(--hc-text);
+	--popover: var(--hc-surface);
+	--popover-foreground: var(--hc-text);
+	--primary: var(--hc-primary);
+	--primary-foreground: #ffffff;
+	--secondary: var(--hc-primary-0);
+	--secondary-foreground: var(--hc-primary);
+	--muted: var(--hc-primary-0);
+	--muted-foreground: var(--hc-text-muted);
+	--accent: var(--hc-primary-0);
+	--accent-foreground: var(--hc-primary);
+	--destructive: var(--hc-danger);
+	--destructive-foreground: #ffffff;
+	--border: var(--hc-border);
+	--input: var(--hc-border);
+	--ring: var(--hc-primary);
+	--chart-1: var(--hc-primary-5);
+	--chart-2: var(--hc-accent);
+	--chart-3: var(--hc-primary-3);
+	--chart-4: var(--hc-warning);
+	--chart-5: var(--hc-success);
+	--sidebar: var(--hc-surface);
+	--sidebar-foreground: var(--hc-text);
+	--sidebar-primary: var(--hc-primary);
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: var(--hc-primary-0);
+	--sidebar-accent-foreground: var(--hc-primary);
+	--sidebar-border: var(--hc-border);
+	--sidebar-ring: var(--hc-primary);
+}
+
+.dark {
+	--hc-primary: #ac97d3;
+	--hc-primary-hover: #cbbfe4;
+	--hc-secondary: #3d0b44;
+	--hc-accent: #e44689;
+	--hc-accent-soft: rgba(228, 70, 137, 0.18);
+	--hc-page: #141019;
+	--hc-surface: #1d1726;
+	--hc-border: rgba(255, 255, 255, 0.08);
+	--hc-text: #f4f1f9;
+	--hc-text-muted: #a39cb0;
+	--hc-text-tertiary: #7a7387;
+	--hc-success: #15803d;
+	--hc-warning: #d97706;
+	--hc-danger: #b91c1c;
+	--hc-primary-0: #f4f1f9;
+	--hc-primary-1: #e5dff1;
+	--hc-primary-2: #cbbfe4;
+	--hc-primary-3: #ac97d3;
+	--hc-primary-4: #8c70c2;
+	--hc-primary-5: #6f4cb3;
+	--hc-primary-6: #593d8f;
+	--hc-primary-7: #473173;
+	--hc-primary-8: #40296c;
+	--hc-primary-9: #211438;
+
+	/* shadcn-style names used by ui/* primitives, mapped onto the hc tokens */
+	--background: var(--hc-page);
+	--foreground: var(--hc-text);
+	--card: var(--hc-surface);
+	--card-foreground: var(--hc-text);
+	--popover: var(--hc-surface);
+	--popover-foreground: var(--hc-text);
+	--primary: var(--hc-primary);
+	--primary-foreground: var(--hc-primary-9);
+	--secondary: var(--hc-primary-9);
+	--secondary-foreground: var(--hc-primary-2);
+	--muted: var(--hc-primary-9);
+	--muted-foreground: var(--hc-text-muted);
+	--accent: var(--hc-primary-9);
+	--accent-foreground: var(--hc-primary-2);
+	--destructive: var(--hc-danger);
+	--destructive-foreground: #ffffff;
+	--border: var(--hc-border);
+	--input: var(--hc-border);
+	--ring: var(--hc-primary);
+	--chart-1: var(--hc-primary-5);
+	--chart-2: var(--hc-accent);
+	--chart-3: var(--hc-primary-3);
+	--chart-4: var(--hc-warning);
+	--chart-5: var(--hc-success);
+	--sidebar: var(--hc-surface);
+	--sidebar-foreground: var(--hc-text);
+	--sidebar-primary: var(--hc-primary);
+	--sidebar-primary-foreground: var(--hc-primary-9);
+	--sidebar-accent: var(--hc-primary-9);
+	--sidebar-accent-foreground: var(--hc-primary-2);
+	--sidebar-border: var(--hc-border);
+	--sidebar-ring: var(--hc-primary);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+		font-family: var(--font-outfit), system-ui, sans-serif;
+		letter-spacing: 0.2px;
+		line-height: 1.6;
+	}
+
+	h1,
+	h2,
+	h3 {
+		letter-spacing: 0.3px;
+	}
+
+	h1,
+	h2 {
+		font-weight: 700;
+	}
+
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: 600;
+	}
+}
+
+/*
+  Nextra docs surfaces. Nextra's primary colour already follows the purple via
+  <Head color>; these map its remaining fixed colours onto the hc tokens.
+  Overrides are unlayered, so they win over Nextra's utility layer.
+*/
+:root {
+	/* "info" callouts and other blue accents use Nextra's blue scale */
+	--x-color-blue-100: var(--hc-primary-1);
+	--x-color-blue-400: var(--hc-primary-3);
+	--x-color-blue-600: var(--hc-primary-4);
+	--x-color-blue-700: var(--hc-primary-7);
+	--x-color-blue-900: var(--hc-primary-6);
+}
+
+.nextra-navbar-blur {
+	background-color: color-mix(in srgb, var(--hc-surface) 85%, transparent);
+	border-color: var(--hc-border);
+}
+
+.nextra-mobile-nav,
+.nextra-sidebar {
+	background-color: var(--hc-surface);
+}
+
+.nextra-border {
+	border-color: var(--hc-border);
+}
+
+.nextra-card {
+	background-color: var(--hc-surface);
+	border-color: var(--hc-border);
+	border-radius: var(--hc-radius-card);
+	box-shadow: var(--hc-shadow-card);
+}
+
+.nextra-card:hover {
+	border-color: var(--hc-primary-3);
+	box-shadow: var(--hc-shadow-card);
+}
+
+article pre {
+	background-color: var(--hc-surface);
+	--tw-ring-color: var(--hc-border);
+	border-radius: var(--hc-radius-md);
+}
+
+article :is(td, th, tr) {
+	border-color: var(--hc-border);
+}
+
+article tr:nth-child(even) {
+	background-color: var(--hc-primary-0);
+}
+
+.dark article tr:nth-child(even) {
+	background-color: color-mix(in srgb, var(--hc-primary-3) 8%, transparent);
+}
+
+article h1,
+article h2,
+article h3,
+article h4 {
+	color: var(--hc-text);
+	font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+/* legal pages: body copy inside a card */
+.legal-card {
+	background-color: var(--hc-surface);
+	border: 1px solid var(--hc-border);
+	border-radius: var(--hc-radius-card);
+	box-shadow: var(--hc-shadow-card);
+}
+
+@keyframes float-up {
+	0%,
+	100% {
+		transform: translateY(0);
+		opacity: 0.6;
+	}
+	50% {
+		transform: translateY(-6px);
+		opacity: 0.8;
+	}
+}
+
+@keyframes float-down {
+	0%,
+	100% {
+		transform: translateY(0);
+		opacity: 0.6;
+	}
+	50% {
+		transform: translateY(6px);
+		opacity: 0.8;
+	}
+}
+
+@keyframes float-left {
+	0%,
+	100% {
+		transform: translateX(0);
+		opacity: 0.6;
+	}
+	50% {
+		transform: translateX(-6px);
+		opacity: 0.8;
+	}
+}
+
+@keyframes float-right {
+	0%,
+	100% {
+		transform: translateX(0);
+		opacity: 0.6;
+	}
+	50% {
+		transform: translateX(6px);
+		opacity: 0.8;
+	}
+}
+
+@keyframes float-scale {
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 0.6;
+	}
+	50% {
+		transform: scale(1.03);
+		opacity: 0.8;
+	}
+}
+
+.animate-float-up {
+	animation: float-up 12s ease-in-out infinite;
+}
+
+.animate-float-down {
+	animation: float-down 12s ease-in-out infinite;
+}
+
+.animate-float-left {
+	animation: float-left 12s ease-in-out infinite;
+}
+
+.animate-float-right {
+	animation: float-right 12s ease-in-out infinite;
+}
+
+.animate-float-scale {
+	animation: float-scale 12s ease-in-out infinite;
+}
+
+@keyframes card-hover {
+	0% {
+		/* transform: scale(1); */
+	}
+	100% {
+		/* transform: scale(1.02); */
+	}
+}
+
+@keyframes card-tap {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0.99);
+	}
+}
+
+@keyframes icon-hover {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1.1);
+	}
+}
+
+.animate-card-hover {
+	transition:
+		border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+		box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-card-hover:hover {
+	/* animation: card-hover 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; */
+}
+
+.animate-card-tap:active {
+	animation: card-tap 0.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-icon-hover {
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-icon-hover:hover {
+	animation: icon-hover 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes image-hover {
+	0% {
+		/* transform: scale(1); */
+	}
+	100% {
+		/* transform: scale(1.01); */
+	}
+}
+
+@keyframes image-tap {
+	0% {
+		/* transform: scale(1); */
+	}
+	100% {
+		/* transform: scale(0.99); */
+	}
+}
+
+.animate-image-hover {
+	transition: all 0.3s ease;
+}
+
+.animate-image-hover:hover {
+	/* animation: image-hover 0.3s ease forwards; */
+}
+
+.animate-image-hover:active {
+	/* animation: image-tap 0.3s ease forwards; */
+}
+
+@keyframes about-image-hover {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1.02);
+	}
+}
+
+.animate-about-image-hover {
+	transition: all 0.3s ease;
+}
+
+.animate-about-image-hover:hover {
+	animation: about-image-hover 0.3s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	.animate-float-up,
+	.animate-float-down,
+	.animate-float-left,
+	.animate-float-right,
+	.animate-float-scale,
+	[class*="animate-["] {
+		animation: none;
+	}
+}

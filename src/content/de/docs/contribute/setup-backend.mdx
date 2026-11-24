@@ -1,0 +1,86 @@
+# Backend einrichten
+
+Repository: [hawconnect/hawconnect-backend](https://github.com/hawconnect/hawconnect-backend). Bun, Express und Apollo, mit PostgreSQL für Konten und verwaltete Inhalte.
+
+## Installieren und starten
+
+Nutze die Bun-Version aus `.bun-version` und das Lockfile:
+
+```bash
+bun install --frozen-lockfile
+cp .env.example .env.local
+bun start
+```
+
+GraphQL läuft dann unter `http://localhost:4000/graphql`. Das Einlesen öffentlicher Quellen braucht weder Hochschul-Konten noch SMTP noch Datenbank-Zugangsdaten, nur ausgehendes HTTPS. Verwaltete Inhalte und Konten brauchen die Datenbank.
+
+## Lokale Umgebung
+
+```dotenv
+PORT=4000
+HAWCONNECT_WEB_ORIGINS=http://localhost:3000,http://localhost:3001,http://localhost:8081
+HAWCONNECT_AUTH_ORIGIN=http://localhost:4000
+HAWCONNECT_WEB_ORIGIN=http://localhost:3000
+HAWCONNECT_CONSOLE_ORIGIN=http://localhost:43127
+```
+
+Starte das Backend nach Änderungen an den Umgebungswerten neu.
+
+## Anmeldeseite lokal
+
+Die Anmeldeseite wird vom Backend ausgeliefert und läuft lokal unter `account.localhost`:
+
+```dotenv
+HAWCONNECT_LOGIN_ORIGIN=http://account.localhost:4000
+# mindestens 32 zufällige Zeichen, z. B. mit `openssl rand -hex 32`
+HAWCONNECT_OIDC_SECRET_HAWCONNECT_APP=
+```
+
+Führe einmalig `bun run accounts:migrate` aus (und nach Updates). In der App setzt du `EXPO_PUBLIC_HAWCONNECT_LOGIN_URL=http://account.localhost:4000`. Chrome und Firefox lösen `account.localhost` selbst auf; Safari und Emulatoren brauchen eine andere Einrichtung, etwa einen Hosts-Eintrag.
+
+## Konten, E-Mail und Verwaltung
+
+Diese Werte gehören nur in die private Server-Konfiguration, nie in Commits oder öffentliche App-Variablen:
+
+```dotenv
+HAWCONNECT_ACCOUNTS_DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/DATABASE
+HAWCONNECT_ACCOUNT_SECRET=REPLACE_WITH_A_RANDOM_SECRET
+HAWCONNECT_SYNC_ENCRYPTION_KEY=REPLACE_WITH_BASE64_OF_32_RANDOM_BYTES
+HAWCONNECT_ADMIN_EMAILS=maintainer@haw-hamburg.de
+
+HAWCONNECT_SMTP_HOST=YOUR_SMTP_HOST
+HAWCONNECT_SMTP_PORT=587
+HAWCONNECT_SMTP_USER=YOUR_SMTP_USERNAME
+HAWCONNECT_SMTP_PASSWORD=YOUR_SMTP_PASSWORD
+HAWCONNECT_MAIL_FROM="HAWConnect <YOUR_AUTHORISED_SENDER>"
+```
+
+Die Datenbank-URL gilt für Konten und Campus-Inhalte. Admin-Zugriff braucht eine ausdrückliche Freigabe; allein die Hochschul-Domain gibt keine Rechte.
+
+## Datenbank
+
+Beim Start werden keine Migrationen ausgeführt. Sichere die Zieldatenbank und prüfe den bestehenden Stand, bevor du das Schema änderst. Je nach Stand stehen Befehle wie diese bereit:
+
+```bash
+bun run migrate
+bun run accounts:migrate
+bun run admin:migrate
+bun run organizers:migrate
+bun run legal:migrate
+bun run clubs:migrate
+bun run quick-links:migrate
+bun run marketplace:migrate
+```
+
+Das ist keine Anleitung, die ganze Reihe auf eine bestehende Datenbank anzuwenden. Bewahre vorhandene Synchronisierungs-Schlüssel auf, wenn du Daten verschiebst.
+
+## Prüfen
+
+```bash
+bun run codegen
+bunx tsc --noEmit
+bun run lint
+bun test
+```
+
+Ändert sich das GraphQL-Schema, erzeuge auch den Client in der App neu.
