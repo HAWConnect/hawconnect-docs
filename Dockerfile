@@ -1,0 +1,63 @@
+FROM node:26.13.1-alpine@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5 AS base
+
+FROM oven/bun@sha256:5ff609364c049b54eb0ff560ec96319729a972078ef2c755d758f0c6ef89c2d6 AS deps
+WORKDIR /app
+
+COPY bun.lock package.json ./
+COPY patches ./patches
+RUN bun install --frozen-lockfile
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_SHARP_PATH=/app/node_modules/sharp
+
+# Commit shown in the footer: COMMIT_HASH from the GitHub workflow, or Coolify's
+# SOURCE_COMMIT (enable "Include Source Commit in Build" in Coolify).
+ARG COMMIT_HASH
+ARG SOURCE_COMMIT
+ENV NEXT_PUBLIC_COMMIT_HASH=${COMMIT_HASH:-$SOURCE_COMMIT}
+
+# Optional store links, inlined into the client bundle at build time.
+ARG NEXT_PUBLIC_APP_STORE_URL
+ARG NEXT_PUBLIC_GOOGLE_PLAY_URL
+ENV NEXT_PUBLIC_APP_STORE_URL=${NEXT_PUBLIC_APP_STORE_URL}
+ENV NEXT_PUBLIC_GOOGLE_PLAY_URL=${NEXT_PUBLIC_GOOGLE_PLAY_URL}
+
+RUN npm run build
+
+# Production image, copy all the files and run next
+FROM node:26.13.1-alpine@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5 AS runner
+WORKDIR /app
+
+ARG COMMIT_HASH
+ARG SOURCE_COMMIT
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_PUBLIC_COMMIT_HASH=${COMMIT_HASH:-$SOURCE_COMMIT}
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+
+# server.js is created by next build from the standalone output
+# https://nextjs.org/docs/pages/api-reference/next-config-js/output
+CMD ["node", "server.js"]

@@ -1,0 +1,28 @@
+# Architektur
+
+HAWConnect besteht aus vier getrennten Repositories und einer vom Backend verwalteten PostgreSQL-Datenbank.
+
+| Teil | Repository | Aufgabe |
+| --- | --- | --- |
+| App | [hawconnect-app](https://github.com/hawconnect/hawconnect-app) | Android-, iOS- und Web-App (Expo, React Native) |
+| Backend | [hawconnect-backend](https://github.com/hawconnect/hawconnect-backend) | API, Konten, Synchronisierung, Anmeldeseite und Einlesen öffentlicher Quellen (Bun, Express, Apollo) |
+| Console | [hawconnect-console](https://github.com/hawconnect/hawconnect-console) | Verwaltungsoberfläche (TanStack Start, React) |
+| Website | [hawconnect-docs](https://github.com/hawconnect/hawconnect-docs) | diese Seite (Next.js, Nextra) |
+
+Das Backend besitzt den Datenbankzugriff. Weder App noch Console erhalten Datenbank-Zugangsdaten. Die Console ruft die Admin-Schnittstelle des Backends auf; jede privilegierte Anfrage wird dort geprüft.
+
+## Adressen
+
+| Adresse | Zweck |
+| --- | --- |
+| `hawconnect.de` | diese Website |
+| `app.hawconnect.de` | Web-App |
+| `api.hawconnect.de` | Backend (GraphQL und REST) |
+| `account.hawconnect.de` | Anmeldeseite, vom Backend ausgeliefert |
+| `console.hawconnect.de` | Admin-Console |
+
+Das sind die vorgesehenen Zieladressen der Konfiguration.
+
+## Datenquellen
+
+Das Backend liest öffentliche Quellen ein: Speisepläne des Studierendenwerks Hamburg sowie öffentliche HAW-Veranstaltungen, HAW-News und Semesterzeiten. Dafür sind keine Hochschul-Zugangsdaten nötig. Direkte, angemeldete Hochschul-Schnittstellen werden nicht verwendet.

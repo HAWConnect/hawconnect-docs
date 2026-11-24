@@ -1,0 +1,224 @@
+{
+	"common": {
+		"notFound": {
+			"title": "Seite nicht gefunden",
+			"description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+			"home": "Zur Startseite"
+		},
+		"language": {
+			"switch": "Sprache wechseln",
+			"label": "Sprache"
+		}
+	},
+	"hero": {
+		"title": "HAWConnect",
+		"subtitle": "Die Campus-App für die HAW Hamburg",
+		"by": "Ein unabhängiges Projekt von Studierenden, ohne offizielle Verbindung zur Hochschule.",
+		"features": {
+			"schedule": "Stundenplan",
+			"campusMap": "Karte",
+			"food": "Essen",
+			"events": "Events",
+			"guest": "Ohne Konto",
+			"openSource": "Open Source",
+			"news": "News",
+			"marketplace": "Marktplatz"
+		},
+		"buttons": {
+			"openWebApp": "Web-App öffnen",
+			"download": "Download"
+		}
+	},
+	"features": {
+		"title": "Das steckt in HAWConnect",
+		"description": "Die wichtigsten Funktionen für deinen Alltag an der HAW Hamburg.",
+		"items": {
+			"food": {
+				"title": "Essen",
+				"description": "Speisepläne der Mensen am Berliner Tor, in Bergedorf und an der Finkenau, vom Studierendenwerk Hamburg. Mit Studierendenpreisen und Einstellungen für Allergene und Kennzeichnungen."
+			},
+			"schedule": {
+				"title": "Stundenplan",
+				"description": "Deine Lehrveranstaltungen auf einen Blick, aus den Kalendern, die du importiert hast."
+			},
+			"calendar": {
+				"title": "Kalender und Semesterzeiten",
+				"description": "Importiere eine .ics-Datei oder einen Exportlink aus myHAW, prüfe die Vorschau und aktualisiere Kalender bei Bedarf. Die Semesterzeiten stehen ebenfalls in der App."
+			},
+			"map": {
+				"title": "Karte",
+				"description": "Suche nach Campus, Adresse oder Gebäude wie BT7. Die Karte zeigt Berliner Tor, Bergedorf, Finkenau und Armgartstraße. Routen öffnen sich in deiner Karten-App."
+			},
+			"events": {
+				"title": "HAW Events und News",
+				"description": "Veranstaltungen und Nachrichten von der HAW-Website, direkt in der App."
+			},
+			"marketplace": {
+				"title": "Marktplatz",
+				"description": "Durchstöbere Inserate ohne Konto. Zum Erstellen von Inseraten, Kontaktieren und Melden brauchst du ein Konto."
+			},
+			"clubs": {
+				"title": "Clubs",
+				"description": "Sieh dir studentische Clubs und Initiativen an der HAW Hamburg an."
+			},
+			"quicklinks": {
+				"title": "Quick Links",
+				"description": "Schnellzugriff auf Links wie myHAW, Moodle, E-Mail und den Bibliothekskatalog."
+			}
+		}
+	},
+	"about": {
+		"badge": "Über das Projekt",
+		"title": "Von Studierenden entwickelt",
+		"description": {
+			"part1": "HAWConnect wird von Studierenden entwickelt und betreut. Es ist ein unabhängiges Projekt: Die HAW Hamburg betreibt oder unterstützt es nicht.",
+			"part2": "Der Quellcode ist offen auf GitHub. Du kannst mitlesen, Fehler melden oder selbst etwas beitragen."
+		},
+		"tags": {
+			"openSource": "Open Source",
+			"community": "Von Studierenden betreut",
+			"guest": "Ohne Konto nutzbar"
+		},
+		"logoAlt": "HAWConnect-Logo"
+	},
+	"testimonials": {
+		"title": "Stimmen",
+		"description": "Was Studierende über HAWConnect sagen."
+	},
+	"faq": {
+		"title": "Häufige Fragen",
+		"description": "Kurze Antworten zu Konto, Daten, Kalender und Speiseplan.",
+		"questions": [
+			{
+				"question": "Brauche ich ein Konto?",
+				"answer": "Nein. Mit „Als Gast fortfahren“ nutzt du HAWConnect ohne Konto. Kalender und Einstellungen bleiben dann auf deinem Gerät."
+			},
+			{
+				"question": "Wie melde ich mich an?",
+				"answer": "Melde dich auf account.hawconnect.de mit deinem HAWConnect-Konto an: E-Mail-Adresse und Passwort. Ein neues Konto bestätigst du mit einem 6-stelligen Code aus der E-Mail. Dein myHAW-Passwort brauchst du nicht. Die Anmeldung setzt voraus, dass der Konto- und E-Mail-Dienst erreichbar ist."
+			},
+			{
+				"question": "Wo liegen meine Daten?",
+				"answer": "Im Gastmodus nur auf deinem Gerät. Wenn du dich anmeldest und synchronisierst, werden Kalender und Einstellungen an den HAWConnect-Dienst übertragen und dort verschlüsselt gespeichert."
+			},
+			{
+				"question": "Wie importiere ich meinen Stundenplan?",
+				"answer": "Öffne den Kalender, dann die Einstellungen und „Kalender importieren / verwalten“. Wähle eine .ics-Datei aus myHAW oder füge einen Exportlink ein, prüfe die Vorschau und bestätige. Gib dabei kein Hochschulpasswort ein. Eine importierte Datei ist eine Momentaufnahme; für Änderungen importierst du eine neue."
+			},
+			{
+				"question": "Woher kommen die Speisepläne?",
+				"answer": "Vom Studierendenwerk Hamburg, für die Mensen Berliner Tor, Bergedorf und Finkenau. Ein leerer Tag kann ein Schließtag sein oder der Plan ist noch nicht veröffentlicht. Fehlende Allergenangaben bedeuten „unbekannt“, nicht „allergenfrei“. Verbindliche Angaben gibt es beim Studierendenwerk oder vor Ort."
+			},
+			{
+				"question": "Gibt es HAWConnect im App Store oder bei Google Play?",
+				"answer": "Noch nicht verfügbar. Die Web-App läuft schon jetzt im Browser."
+			},
+			{
+				"question": "Ist HAWConnect eine offizielle App der HAW Hamburg?",
+				"answer": "Nein. HAWConnect ist ein unabhängiges Projekt von Studierenden. Verbindliche Angaben, zum Beispiel zu Semesterzeiten, findest du bei der HAW Hamburg."
+			}
+		]
+	},
+	"download": {
+		"title": "Jetzt loslegen",
+		"description": "HAWConnect läuft schon jetzt im Browser. Die Apps für iOS und Android folgen bald.",
+		"comingSoon": "Demnächst",
+		"unavailable": "noch nicht verfügbar",
+		"options": {
+			"appStore": {
+				"title": "App Store",
+				"description": "Für iPhone und iPad",
+				"imageAlt": "Im App Store laden"
+			},
+			"googlePlay": {
+				"title": "Google Play",
+				"description": "Für Android",
+				"imageAlt": "Jetzt bei Google Play"
+			},
+			"webVersion": {
+				"title": "Web-App",
+				"description": "Für alle Geräte, direkt im Browser"
+			}
+		}
+	},
+	"get": {
+		"openWebApp": "Web-App öffnen",
+		"home": "Zur Startseite",
+		"redirecting": "Du wirst zur App weitergeleitet. Falls nichts passiert, nutze den Link oben."
+	},
+	"contributing": {
+		"title": "Mach mit",
+		"description": "HAWConnect ist Open Source und lebt von Beiträgen. Du musst dafür kein Profi sein.",
+		"cards": {
+			"source": {
+				"title": "Quellcode",
+				"description": "Lies den Code auf GitHub und schlage Änderungen vor."
+			},
+			"bugs": {
+				"title": "Fehler melden",
+				"description": "Etwas funktioniert nicht? Beschreibe das Problem in einem Issue."
+			},
+			"translate": {
+				"title": "Übersetzen",
+				"description": "Die Texte der App liegen als Dateien im Quellcode. Verbessere sie per Pull Request."
+			},
+			"ideas": {
+				"title": "Ideen",
+				"description": "Dir fehlt etwas? Schlage eine Funktion in einem Issue vor."
+			}
+		},
+		"buttons": {
+			"source": "Quellcode ansehen",
+			"bugs": "Fehler melden"
+		}
+	},
+	"troubleshooting": {
+		"title": "Probleme?",
+		"description": "Typische Stolpersteine und was dann hilft.",
+		"cards": {
+			"calendar": {
+				"title": "Kalender-Link geht nicht",
+				"description": "Importiere stattdessen eine heruntergeladene .ics-Datei. Bereits importierte Termine bleiben erhalten."
+			},
+			"signin": {
+				"title": "Anmeldung klappt nicht",
+				"description": "Prüfe E-Mail-Adresse und Passwort und bestätige ein neues Konto zuerst mit dem 6-stelligen Code aus der E-Mail. Ohne Konto geht es im Gastmodus."
+			},
+			"menu": {
+				"title": "Speiseplan ist leer",
+				"description": "Vielleicht ist die Mensa geschlossen oder der Plan noch nicht veröffentlicht. Prüfe Datum und Mensa."
+			},
+			"bug": {
+				"title": "Fehler gefunden?",
+				"description": "Melde ihn als Issue auf GitHub."
+			}
+		}
+	},
+	"footer": {
+		"description": "HAWConnect ist eine Campus-App für die HAW Hamburg, von Studierenden entwickelt und betreut. Ein unabhängiges Projekt ohne offizielle Verbindung zur Hochschule.",
+		"sections": {
+			"links": {
+				"title": "Links",
+				"source": "Quellcode",
+				"instagram": "Instagram"
+			},
+			"contact": {
+				"title": "Rechtliches",
+				"email": "E-Mail",
+				"imprint": "Impressum",
+				"privacy": "Datenschutz",
+				"terms": "Nutzungsbedingungen"
+			}
+		},
+		"copyright": {
+			"text": "HAWConnect"
+		}
+	},
+	"theme": {
+		"toggle": "Design umschalten",
+		"title": "Design",
+		"light": "Hell",
+		"dark": "Dunkel",
+		"system": "System"
+	}
+}

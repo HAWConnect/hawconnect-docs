@@ -1,0 +1,224 @@
+{
+	"common": {
+		"notFound": {
+			"title": "Page not found",
+			"description": "The page you're looking for doesn't exist or has been moved.",
+			"home": "Back to home"
+		},
+		"language": {
+			"switch": "Switch language",
+			"label": "Language"
+		}
+	},
+	"hero": {
+		"title": "HAWConnect",
+		"subtitle": "The campus app for HAW Hamburg",
+		"by": "An independent project by students, with no official connection to the university.",
+		"features": {
+			"schedule": "Schedule",
+			"campusMap": "Map",
+			"food": "Food",
+			"events": "Events",
+			"guest": "No account needed",
+			"openSource": "Open source",
+			"news": "News",
+			"marketplace": "Marketplace"
+		},
+		"buttons": {
+			"openWebApp": "Open web app",
+			"download": "Download"
+		}
+	},
+	"features": {
+		"title": "What is in HAWConnect",
+		"description": "The main features for your day at HAW Hamburg.",
+		"items": {
+			"food": {
+				"title": "Food",
+				"description": "Menus from the Studierendenwerk Hamburg mensas at Berliner Tor, Bergedorf and Finkenau. Student prices by default, with settings for allergens and food labels."
+			},
+			"schedule": {
+				"title": "Schedule",
+				"description": "Your classes at a glance, built from the calendars you have imported."
+			},
+			"calendar": {
+				"title": "Calendar and semester dates",
+				"description": "Import an .ics file or an export link from myHAW, check the preview and refresh calendars when needed. Semester dates are in the app too."
+			},
+			"map": {
+				"title": "Map",
+				"description": "Search for a campus, an address or a building such as BT7. The map covers Berliner Tor, Bergedorf, Finkenau and Armgartstraße. Directions open in your maps app."
+			},
+			"events": {
+				"title": "HAW events and news",
+				"description": "Events and news from the HAW website, right in the app."
+			},
+			"marketplace": {
+				"title": "Marketplace",
+				"description": "Browse listings without an account. To create a listing, contact someone or report a listing, you need an account."
+			},
+			"clubs": {
+				"title": "Clubs",
+				"description": "Look through student clubs and initiatives at HAW Hamburg."
+			},
+			"quicklinks": {
+				"title": "Quick links",
+				"description": "Quick access to links such as myHAW, Moodle, email and the library catalogue."
+			}
+		}
+	},
+	"about": {
+		"badge": "About the project",
+		"title": "Built by students",
+		"description": {
+			"part1": "HAWConnect is built and maintained by students. It is an independent project: HAW Hamburg does not run or endorse it.",
+			"part2": "The source code is open on GitHub. You can read it, report bugs or contribute yourself."
+		},
+		"tags": {
+			"openSource": "Open source",
+			"community": "Maintained by students",
+			"guest": "Works without an account"
+		},
+		"logoAlt": "HAWConnect logo"
+	},
+	"testimonials": {
+		"title": "Voices",
+		"description": "What students say about HAWConnect."
+	},
+	"faq": {
+		"title": "Frequently asked questions",
+		"description": "Short answers about accounts, data, calendars and menus.",
+		"questions": [
+			{
+				"question": "Do I need an account?",
+				"answer": "No. Choose \"Continue as guest\" to use HAWConnect without one. Your calendars and preferences then stay on your device."
+			},
+			{
+				"question": "How do I sign in?",
+				"answer": "Sign in on account.hawconnect.de with your HAWConnect account: email address and password. A new account is confirmed with a 6-digit code from the email. You do not need your myHAW password. Signing in requires the account and email service to be available."
+			},
+			{
+				"question": "Where is my data stored?",
+				"answer": "In guest mode, only on your device. If you sign in and sync, calendars and preferences are sent to the HAWConnect service and stored there encrypted."
+			},
+			{
+				"question": "How do I import my timetable?",
+				"answer": "Open Calendar, then its settings and \"Import / manage calendars\". Pick an .ics file from myHAW or paste an export link, check the preview and confirm. Never enter your university password. An imported file is a snapshot; import a new one to get changes."
+			},
+			{
+				"question": "Where does the menu data come from?",
+				"answer": "From the Studierendenwerk Hamburg, for the Berliner Tor, Bergedorf and Finkenau mensas. An empty day can mean the mensa is closed or the menu is not published yet. Missing allergen information means \"unknown\", not \"allergen-free\". For binding information, ask the Studierendenwerk or the staff on site."
+			},
+			{
+				"question": "Is HAWConnect in the App Store or on Google Play?",
+				"answer": "Not available yet. The web app already works in your browser."
+			},
+			{
+				"question": "Is HAWConnect an official HAW Hamburg app?",
+				"answer": "No. HAWConnect is an independent student project. For binding information, such as semester dates, check with HAW Hamburg."
+			}
+		]
+	},
+	"download": {
+		"title": "Get started",
+		"description": "HAWConnect is available in your browser today. The iOS and Android apps are coming soon.",
+		"comingSoon": "Coming soon",
+		"unavailable": "not available yet",
+		"options": {
+			"appStore": {
+				"title": "App Store",
+				"description": "For iPhone and iPad",
+				"imageAlt": "Download on the App Store"
+			},
+			"googlePlay": {
+				"title": "Google Play",
+				"description": "For Android",
+				"imageAlt": "Get it on Google Play"
+			},
+			"webVersion": {
+				"title": "Web app",
+				"description": "For all devices, right in your browser"
+			}
+		}
+	},
+	"get": {
+		"openWebApp": "Open the web app",
+		"home": "Back to home",
+		"redirecting": "Taking you to the app. If nothing happens, use the link above."
+	},
+	"contributing": {
+		"title": "Get involved",
+		"description": "HAWConnect is open source and grows through contributions. You do not need to be an expert.",
+		"cards": {
+			"source": {
+				"title": "Source code",
+				"description": "Read the code on GitHub and propose changes."
+			},
+			"bugs": {
+				"title": "Report a bug",
+				"description": "Something not working? Describe the problem in an issue."
+			},
+			"translate": {
+				"title": "Translate",
+				"description": "The app text lives in files in the source code. Improve it with a pull request."
+			},
+			"ideas": {
+				"title": "Ideas",
+				"description": "Missing something? Suggest a feature in an issue."
+			}
+		},
+		"buttons": {
+			"source": "View source code",
+			"bugs": "Report a bug"
+		}
+	},
+	"troubleshooting": {
+		"title": "Having trouble?",
+		"description": "Common snags and what usually helps.",
+		"cards": {
+			"calendar": {
+				"title": "Calendar link fails",
+				"description": "Import a downloaded .ics file instead. Events you already imported are kept."
+			},
+			"signin": {
+				"title": "Sign-in does not work",
+				"description": "Check your email address and password, and confirm a new account with the 6-digit code from the email first. Guest mode works without an account."
+			},
+			"menu": {
+				"title": "Menu is empty",
+				"description": "The mensa may be closed or the menu not published yet. Check the date and the mensa."
+			},
+			"bug": {
+				"title": "Found a bug?",
+				"description": "Report it as an issue on GitHub."
+			}
+		}
+	},
+	"footer": {
+		"description": "HAWConnect is a campus app for HAW Hamburg, built and maintained by students. It is an independent project and not endorsed by the university.",
+		"sections": {
+			"links": {
+				"title": "Links",
+				"source": "Source code",
+				"instagram": "Instagram"
+			},
+			"contact": {
+				"title": "Legal",
+				"email": "E-Mail",
+				"imprint": "Imprint",
+				"privacy": "Privacy policy",
+				"terms": "Terms of service"
+			}
+		},
+		"copyright": {
+			"text": "HAWConnect"
+		}
+	},
+	"theme": {
+		"toggle": "Toggle theme",
+		"title": "Theme",
+		"light": "Light",
+		"dark": "Dark",
+		"system": "System"
+	}
+}
